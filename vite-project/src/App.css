@@ -1,42 +1,121 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* Chat window container */
+.ep-app__chat {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 300px;
+  height: 400px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.ep-chat-window {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 20px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.ep-chat-window__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.ep-trademark {
+  font-size: 18px;
+  font-weight: bold;
 }
 
-.card {
-  padding: 2em;
+.ep-btn {
+  cursor: pointer;
+  padding: 8px 12px;
+  border: none;
+  background-color: transparent;
 }
 
-.read-the-docs {
-  color: #888;
+.ep-btn--ghost {
+  background-color: transparent;
+}
+
+.ep-btn--inverted {
+  color: #fff;
+}
+
+.ep-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.ep-avatar__img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.ep-chat-window-initial__header-title {
+  font-size: 16px;
+}
+
+.ep-input__wrapper {
+  margin-bottom: 12px;
+}
+
+.ep-input__field {
+  width: 100%;
+  padding: 8px;
+  margin-top: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+
+.ep-btn--filled {
+  background-color: #007bff;
+  color: white;
+}
+
+.ep-typebox__input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+
+.ep-floating-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #007bff;
+  border-radius: 50%;
+  padding: 15px;
+  cursor: pointer;
+}
+
+.ep-floating-button__bot-shape {
+  width: 30px;
+  height: 30px;
+  fill: #fff;
+}
+
+.ep-floating-button__bot-dots span {
+  display: inline-block;
+  background-color: #fff;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 4px;
+}
+
+.ep-floating-button--active {
+  display: block;
+}
+
+.ep-chat-minimized {
+  transform: translateY(100%);
 }

@@ -1,15 +1,49 @@
-import React, { useState } from 'react';
-import { IconButton, Box } from "@mui/material";
+import React, { useState, useRef, useEffect } from 'react';
+import { IconButton } from "@mui/material";
 import ChatIcon from '@mui/icons-material/Chat';
 import SendBox from '../ChatBox/SendBox';
 
+
 const Chat = () => {
-  const [drowe, setDrowe] = useState(false);
+  const [drowe, setDrowe] = useState(false); // State for SendBox visibility
+  const [loginDrower, setLoginDrower] = useState(false); // State for Login visibility
+
+  const loginRef = useRef(null); // Ref for Login
 
   const handleToggle = () => {
-    console.log("Hello, I am Faiz!");
     setDrowe(!drowe);
   };
+
+  const handleColse = () => {
+    setDrowe(false);
+    setLoginDrower(false);
+  };
+
+  const handleLogin = () => {
+    setLoginDrower(!loginDrower);
+  };
+
+  // handle close login
+  const handleLoginClose=()=>{
+    setLoginDrower(false)
+  }
+
+  // Close when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        loginRef.current &&
+        !loginRef.current.contains(event.target)
+      ) {
+        setLoginDrower(false); // Close the login drawer instead of toggling
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <>
@@ -28,12 +62,19 @@ const Chat = () => {
         }}
         onClick={handleToggle}
       >
-        <ChatIcon />
+        <ChatIcon sx={{ fontSize: "2rem" }} />
       </IconButton>
 
       {drowe && (
-        <SendBox/>
+        <SendBox handleclose={handleColse} handlelogin={handleLogin} />
+        // <HelloIamChat/>
       )}
+
+      {/* {loginDrower && (
+        <div ref={loginRef}>
+          <Login  handleLoginClose={handleLoginClose} />
+        </div>
+      )} */}
     </>
   );
 };
